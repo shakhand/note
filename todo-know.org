@@ -1,0 +1,245 @@
+* reading list
+** TODO [[http://www.catb.org/esr/faqs/smart-questions.html%0Ahow%20to%20ask%20smart%20question][show to ask samrt question]]
+   SCHEDULED: <2017-02-18 Sat>
+** [#B] 
+** TODO This is a test
+** aonther point
+** third point
+** fourth point
+
+* English Learning                                                  :English:
+** words
+
+|             | <50>                                               |
+| in sequency | 一次按顺序                                         |
+| Follow up   | if you mention some idea, then you want to continue to invertigate more detail |
+|-------------+----------------------------------------------------|
+
+  
+   
+* Questions
+** TODO When I open a help buffer how can I quick movae aroud it? :Emacs:FAQ:
+
+Except using a swith-to-buffer command or mouse, you can....
+
+** TODO How to understand 'entry' and 'item'?                       :English:
+
+* TODO Task [16%]
+** DONE Get to know TODO in org mode
+   CLOSED: [2017-02-19 Sun 21:00]
+** TODO Find an example how to use the drawer in Org mode.
+   CLOCK: [2017-02-19 Sun 22:10]--[2017-02-19 Sun 22:15] =>  0:05
+   hint: read the drawers chapter again.
+** TODO interesting to know clock time
+   :LOGBOOK:  
+   CLOCK: [2017-02-19 Sun 22:15]--[2017-02-19 Sun 22:43] =>  0:28
+   :END:      
+
+
+** TODO How to clean up blank rows in a table?
+
+** TODO How to get insert plain list efficiently
+
+** TODO How to indent a plain list?
+
+* Org mode                                                            :Emacs:
+** structure
+*** navigation heading
+*** ediding heading
+     M-RET    add a new heading. if the point is in a plain text, the text
+              after the point will become a new heading
+     C-RET    add a new heading
+
+     S-M-RET  add a TODO heading
+     S-C-RET  add a TODO heading
+
+     M-LEFT   promote the current heading 
+     M-RIGHT  demote the current heading
+
+     M-UP     move the subtree up
+     M-DOWN   move the subtree down
+     
+     M-h      mark the current element
+     
+     C-c *    toggle heading with a plain line
+     
+     When a region is active, the promotion, demotion will work on all heading in the region.
+
+*** fold heading
+    S-TAB   cycle the visibility of heading     
+    TAB     same as above
+    
+    C-c /   fold as much as posible except for some information selected. e.g. TODO
+            see sparse trres in manual.
+*** plain lists
+    plain lists includes ordered list unorder list, and description list that use :: to delimit the term and its description.
+    #TODO: how to use them?
+
+*** drawers
+    you can associte information with an entry. but normally you don't want to see it.
+    TODO: give me an example how to use the drawer in Org mode.
+
+*** blocks
+    A block can be used to enclose souce code or ...
+
+*** footnote
+    not important right now
+
+*** Orgstruct
+    Want to enable org mode style interactivation in other mode like text mode, mail mode.
+    #+BEGIN_SRC emacs-lisp
+        (add-hook 'message-mode-hook 'turn-on-orgstruct)
+        (add-hook 'message-mode-hook 'turn-on-orgstruct++)
+    #+END_SRC
+*** Org syntax
+    export the structue of the org text
+    M-: (org-element-parse-buffer) <RET>
+    It outputs an abstract syntax tress represented as a list.
+** Tables
+*** manipulate table
+   |name|age|phone|job C-c <RET> to insert a table heading
+   
+   | name | age | phone |
+   |------+-----+-------|
+   | bob  | 33  | 323455 <RET> to insert next row
+   
+
+   | name | age |  phone |
+   |------+-----+--------|
+   | bob  |  33 | 323455 |  with <tab> to navigate to next field
+   | ^    |     |        |
+
+   | name  | age |  phone | job <tab> to add a new column
+   |-------+-----+--------|
+   | bob   |  33 | 323455 |
+   | Alice |  31 | 344513 |
+   |       |     |        |
+   
+   | name | age |  phone | job C-c <SPC> to blank the field |
+   |------+-----+--------+----------------------------------|
+   | bob  |  33 | 323455 | c programmer                     |
+   |      |     |        |                                  |
+   
+
+   *row column editing*
+   
+   M-<LEFT> move column left at point
+   M-<RIGHT> move column right at point
+   M-S-<LEFT> kill a column at point
+   M-S-<RIGHT> create a new column at point
+
+   M-<UP> move row up at point
+   M-<DOWN> move row down at point
+   M-S-<UP> kill row at point
+   M-S-<DOWN> create a row a point
+   
+   | name | age |  phone |
+   |------+-----+--------|
+   | bob  |  33 | 323455 |
+*** wrappering a long column
+*** enable org table mode in other major mode
+    (add-hook 'message-mode-hook 'turn-on-orgtbl)
+*** spreadsheet
+    TODO: you can operation the table like you operate on spreadsheet
+*** Org-Plot mode
+    Org-Plot can produce graphs of information stored in org tables, either graphically or in ASCII-art.
+
+** Hyperlinks
+Org provides a hyperlinks to file, link, email and more
+*** link format
+    C-c C-l edit a invisible link
+*** internal link
+    Internal link is a link to the element in the current file.
+    
+    1) This is line one
+    2) This is line two
+    3) <<target>> This is the line three
+
+    [[target][go to target]]
+*** external link
+    for example see [[http://orgmode.org/manual/External-links.html#External-links]]
+*** handling link
+    TODO: don't understand yet
+*** TODO add a abbrivattion for the most use link
+*** TODO search option in a file link
+    It allows you to go to a particular location of a file
+** _TODO_ items
+   TODO item is a heading which begins with TODO
+*** Basic TODO 
+    S-<LEFT>    rotate todo state
+    S-<RIGHT>   rotate todo state
+    C-c / t     show todo tree in current buffer
+    S-M <RET>   instert todo heading
+*** TODO extend TODO keywords [0/4]
+    you can extend TODO keywords from TODO, DONE to whatever you want. sees
+**** TODO http://orgmode.org/manual/Workflow-states.html#Workflow-states
+**** TODO http://orgmode.org/manual/TODO-types.html#TODO-types
+**** TODO http://orgmode.org/manual/TODO-types.html#TODO-types
+**** TODO set up TODO keyword per file: [[http://orgmode.org/manual/TODO-types.html#TODO-types]]
+
+*** checkboxes
+The idea of checkbox is dividing a task into small sub-tasks. a plain list starts with a [ ] is a checkbox list. And the parent TODO item which has multiple checkbox sub-items can count the number of its children are done. It can be achived by add [/] or [%].
+
+C-c C-c   toggle a checkbox
+C-c #     update statistics cookies
+
+- [-] parent checkbox 
+  - [ ] test1
+  - [ ] test2
+  - [ ] test3
+  
+Note that the parent checkbox entry reflexes the number of children done checkboxs with the [-] or [X].
+
+** Tag
+  - [ ] when to use tag?
+  - for example, :Example-Tag:Love@Home:
+  - A child entry can inherit the tags which its parent entry holds. The inherited tags are not shown explicitly.
+  - Tags can be defined in file basis so that evey entry in the file inheret these tags
+  - you can even exlcule the tags from inheriting
+  - you can configure agenda so that it respects the tag inheritance or not
+
+| key binding | command          | additinoal                                        |
+|-------------+------------------+---------------------------------------------------|
+| C-c C-c     | add tag at point | add a list of tags for completion when insert tag |
+|             |                  |                                                   |
+
+*** tag inheritance
+** Timestamp
+The timestamp can present anywhere in org mode. It can be after a heading or a plain list item. The effect of the timestamp is showing a entry in a agenda view.
+*** create a timestamp
+    C-c .  prompt for a date. When the command is trigger twice in succession, a time range will be inserted
+    C-u C-c .  insert a datetime like <2017-02-22 Wed 23:45>
+    S-<UP>   increment second field at point to timestamp
+    S-<DOWN> derement second field at point to timestamp
+    S-<RIGHT> increment day field at point to timestamp
+    S-<LEFT> decrement day field at point to timestamp
+**** TODO how to enter date/time when prompt
+*** deadline & scheduling
+Deadline is used on a task which is supposed to be finished by a given date. If the deadline is , the agenda will show a warning that the deadline is missed or approaching
+
+Scheduling is used on a task which is supposed to start on a given date.
+** clock time
+you can clock in and clock out a TODO task and repeat. The Org mode will save the clock history for you then you can get the summary of how many hours you spent on that task.
+
+C-c C-x C-i         clock in a task. if there is another task is being clocked, it  will be clocked out atomatically
+C-c C-x C-o         clock out a task.
+C-c C-x C-x         reclock the last task is clocked out.
+C-c C-t             setting done with task make a task is clocked out automatically.
+C-c C-x C-q         cancel a current clock which is useful for a task is clocked by accidentally.
+C-c C-x C-j         jump to a heading which is current clocking
+C-c C-x C-d         show time consuming summary for each subtrees in current buffer
+
+*** a clock report as a clock table
+C-c C-x C-r         instert a clock report or named clock table
+#+BEGIN: clocktable :maxlevel 3 :scope file
+#+CAPTION: Clock summary at [2017-02-19 Sun 22:44]
+| Headline                                     | Time   |      |
+|----------------------------------------------+--------+------|
+| *Total time*                                 | *0:33* |      |
+|----------------------------------------------+--------+------|
+| TODO Task [25%]                              | 0:33   |      |
+| \emsp TODO Find an example how to use the... |        | 0:05 |
+| \emsp TODO interesting to know clock time    |        | 0:28 |
+#+END:
+
+C-c C-c             update clock report when cursor is at the line starts with #+BEGIN

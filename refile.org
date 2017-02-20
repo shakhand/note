@@ -1,0 +1,6 @@
+* TODO google some tips to efficiently editing
+  :LOGBOOK:  
+  CLOCK: [2017-02-20 Mon 23:22]--[2017-02-20 Mon 23:23] =>  0:01
+  :END:      
+[2017-02-20 Mon 23:22]
+[[file:~/note/todo-know.org::*Tag][Tag]]
