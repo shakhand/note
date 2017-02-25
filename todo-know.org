@@ -1,19 +1,15 @@
 * reading list
 ** TODO [[http://www.catb.org/esr/faqs/smart-questions.html%0Ahow%20to%20ask%20smart%20question][show to ask samrt question]]
    SCHEDULED: <2017-02-18 Sat>
-** [#B] 
-** TODO This is a test
-** aonther point
-** third point
-** fourth point
 
 * English Learning                                                  :English:
 ** words
+| word       |                                                    |
+|------------+----------------------------------------------------|
+|            | <50>                                               |
+| in sequenc | 一次按顺序                                         |
+| Follow up  | if you mention some idea, then you want to continue to invertigate more detail |
 
-|             | <50>                                               |
-| in sequency | 一次按顺序                                         |
-| Follow up   | if you mention some idea, then you want to continue to invertigate more detail |
-|-------------+----------------------------------------------------|
 
   
    
@@ -34,14 +30,16 @@ Except using a swith-to-buffer command or mouse, you can....
    :LOGBOOK:  
    CLOCK: [2017-02-19 Sun 22:15]--[2017-02-19 Sun 22:43] =>  0:28
    :END:      
-
-
 ** TODO How to clean up blank rows in a table?
-
 ** TODO How to get insert plain list efficiently
-
 ** TODO How to indent a plain list?
-
+** TODO how to add a TODO keyword in a plain list?
+** TODO google some tips to efficiently editing
+  :LOGBOOK:  
+  CLOCK: [2017-02-20 Mon 23:22]--[2017-02-20 Mon 23:23] =>  0:01
+  :END:      
+[2017-02-20 Mon 23:22]
+[[file:~/note/todo-know.org::*Tag][Tag]]
 * Org mode                                                            :Emacs:
 ** structure
 *** navigation heading
@@ -162,6 +160,8 @@ Org provides a hyperlinks to file, link, email and more
     TODO: don't understand yet
 *** TODO add a abbrivattion for the most use link
 *** TODO search option in a file link
+    - Note taken on [2017-02-25 Sat 20:17] \\
+      This ia note for testing
     It allows you to go to a particular location of a file
 ** _TODO_ items
    TODO item is a heading which begins with TODO
@@ -243,3 +243,104 @@ C-c C-x C-r         instert a clock report or named clock table
 #+END:
 
 C-c C-c             update clock report when cursor is at the line starts with #+BEGIN
+** Agenda View
+   Agenda view allows you to show the information scattered across multiple files in an orgnized way.
+   It supports:
+   - calendar view shows events in a date
+   - match view shows information that matches the TODO, TAG, property
+   - TODO list
+   - time line view show all events in time sorted view
+   - a text serach shows all information that match a keyword
+   - a stuck project view show stuck projects
+     - [ ] what is a stuck project?
+   - custom view a combination of different views
+*** Agenda files
+    list folders and files where agenda will collect information
+*** Built-in agenda views
+    acitvate agenda dispatcher with C-c a
+**** weekly/daily agenda
+     calendar view with current tasks
+     - allows you to specify how many days shown in a agenda
+     - allows you change the deadline in a agenda buffer
+     - can shows special dates like holiday anniversaries and so on
+     - appointment remiders that remind you of some event
+**** The global TODO list
+     Lists all todo entries
+     - you can specify which TODO want to show with a filer
+     - you can specify how many level of subtree for TODO can be shown
+**** matching Tags and properies
+     | key binding | command  | comment                                                   |
+     |-------------+----------+-----------------------------------------------------------|
+     | C-c a m     | tag view | select all heading mathed the tag or property             |
+     | C-c a M     | tag view | sleect all heading with TODO and matched tag and property |
+***** match syntax
+      a serach string uses operator '|'(or), '&'(and), '+"(and) and regular expression. For example:
+      | search string         | meaning                                                                         |
+      |-----------------------+---------------------------------------------------------------------------------|
+      | 'work'                | select headline with tag 'work'                                                 |
+      | 'work+boss'           | select headline with tag 'work' and 'boss'                                      |
+      | 'work-boss'           | select headline with 'work' and no 'boss'                                       |
+      | 'work+{^boss.*}'      | select headlines with work and a tag which starts with 'boss'                   |
+      | 'work'                | if 'work' is a member of group tag, that other members also added to be matched |
+      | 'work+TODO="WAITING"' | select headlines with tag 'work' and property TODO='waiting'                    |
+      'work+With={Sarah\|Denny}+SCHEDULED>="<2016-12-13>"' select headlines with tag 'work' and property 'With' Sarah or Denny and
+      More detial see org manual
+**** timline for a gingle file
+**** serach view
+     It is useful for seach notes and triggered by "C-c a s".
+     The search string uses the boolean operator and regular exrepssion.
+     '+': and '-': except
+     e.g. '+computer +wifi -ethernet -{8\.11[bg]} search notes that contains 'computer', 'wifi', no 'ethernet', no string like 8.11b and 8.11g
+**** stuck projets
+     A stuck project has no next action, so it will never show up in the TODO lists org mode. during the review, you need to identify them and define a next action for them.
+**** presentation and sort
+     you can custom an agenda view looking. 
+***** category
+      Each item shown in the agenda view has a category as first item in one line. you can specify which entry has which category. By default, the emacs use the file name as a category for all entries in that file. You can specify one at the beginning of the file. You can even specify a particular category for a given subtree entry.
+***** time of date sepcification
+      The agenda view checks each agenda items for a time of day specification. An entry which has timestamp will be added to the agenda view as an item.
+***** Sorting agenda items
+      Before showing agenda itmes, they are sorted. 
+      - For the daily/weekly agenda, the items are sorted in time ordered
+      - For TODO list agenda, the items are sorted in priority.
+      - For tag matches, no sort. The itmes are show in the order in which they are found in the agenda files
+***** Filtering and limiting agenda items
+      Two ways to control how many items are shown in the the agenda. Filtering items act on displaying of items, while limiting acts on how many items are contribted to an agenda. Filters are used interactively and limiting are used as variable.
+****** filters
+       - / filter by tag
+       - < filter by category at point
+       - ^ filter by headline at point to show its slibing and parent headling
+       - = filter by reguar expression
+****** TODO limitings
+***** Commands in agenda view
+      In agenda view, you can navigate the entries and jump to an their original org file via agenda entry. All of these can be done via commands.
+      n         next line
+      p         previous line
+      N         next item
+      P         previous item
+      <SPC>     go to org file for the entry at point
+      F         toggle ~follow~ view. In a Follow view, the org file for the entry at point is shown on other windwos. When you move the point through the itmes, the org file windows shows the corresponding location in org file.
+      C-c C-x b Display the entire subtree of current entry in a indirect buffer
+      A         reopen the agenda view selector
+      o         delete other window
+      v d       switch to day view
+      v w       switch to week view
+      f         go to the following time-span agenda. In a day view, pressing f will go to next day view. In a week view, pressing f will go to the next view.
+      b         go to the previous time-span agenda.
+      .         go to today
+      j         promt for a day to go
+      J         go to the currently clock-in task in the agenda buffer
+      r         recreate agenda buffer
+      C-c C-x C-c invoke column view
+      
+      Remote editing
+      
+      t        change the TODO state both on agenda and orignal org file
+      C-k      Delte the current agenda item and its subtree both in agenda and the original org file
+      C-_      undow a change due to a remote ediding
+      C-c C-w  refile then current agenda entry
+      C-c C-x C-a Archive the entry and its subtree both in agenda 
+      :        set tag for the current entry
+      T        show all tags associated with the current entry
+      ,        show priority for the current entry
+      z        insert a note to an entry

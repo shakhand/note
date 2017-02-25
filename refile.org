@@ -4,3 +4,7 @@
   :END:      
 [2017-02-20 Mon 23:22]
 [[file:~/note/todo-know.org::*Tag][Tag]]
+* TODO allow to wrapper a long line in org mode
+  CLOCK: [2017-02-25 Sat 14:58]--[2017-02-25 Sat 14:58] =>  0:00
+[2017-02-25 Sat 14:58]
+[[file:d:/personal-note/todo-know.org::*stuck%20projets][stuck projets]]
